@@ -100,6 +100,12 @@ for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cach
     #start pub from the /app folder to have correct symlink paths
     /app/dart-sdk/bin/pub get
 
+    #update PATH variable for pub-cache/bin folder
+    message "*** Updating PATH with pub-cache/bin folder"
+
+    export PATH="$PATH":"$HOME/pub-cache/bin" >> ~/.bashrc
+    source ~/.bashrc
+
     if [ -d "web" ]
     then
         message "*** Running pub build"
